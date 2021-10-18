@@ -7,6 +7,11 @@ class PostImage < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   #favorite関連づけ
   has_many :favorites, dependent: :destroy
+  
+  #投稿のバリテーション
+  validates :shop_name, presence: true
+  validates :image, presence: true
+  
 
   #favorited_by?メソッド:引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するか調べる。
   #存在していればtrue、存在していなければfalseを返す。Viewで使う
